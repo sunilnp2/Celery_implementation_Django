@@ -1,0 +1,7 @@
+{% load static %}
+{% autoescape off %}
+Hello User!
+{{user}} Added New Blog "{{title}}" 
+Go and check it out.
+{{ protocol }}://{{ domain }}{% url 'blog:home' %}
+{% endautoescape %}
