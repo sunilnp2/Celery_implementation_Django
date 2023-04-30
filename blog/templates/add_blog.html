@@ -9,7 +9,7 @@
 <h1 style="color:red; font-size:14px; font-weight: bold;">{{ mess }}</h1>
 {% endfor %}
 {% endif %}
-<form class = "myform" action="" method="post" novalidate> 
+<form class = "myform" action="" method="post" enctype= "multipart/form-data" novalidate> 
   {% csrf_token %}
 	<fieldset>
     {{ form.non_field_errors }}
