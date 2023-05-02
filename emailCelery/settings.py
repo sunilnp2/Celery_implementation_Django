@@ -30,6 +30,9 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+SITE_ID = 2
+
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -39,7 +42,22 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blog',
     'django_celery_results',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
 ]
+
+SOCIALACCOUNT_PROVIDERS  = {
+    "google":{
+        "SCOPE":[
+            "profile",
+            "email", 
+        ],
+        "AUTH_PARAMS":{"access-type":"online"}
+    }
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -168,3 +186,12 @@ CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TASK_SERIALIZER = 'json'
 CELLERY_TIMEZONE = 'Asia/Kolkata'
 
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend'
+]
+
+
+LOGIN_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL = "/"
